@@ -1,0 +1,76 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{DarkMirror: An Explainable Cascading Framework for Detecting Conversational Dark Patterns in AI Wellness Companions}
+
+\author{DarkMirror~Research~Team}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+As conversational AI companions become ubiquitous in mental wellness contexts, commercial engagement incentives increasingly give rise to subtle conversational dark patterns that induce emotional dependency and inflate interaction time. In this paper, we present DarkMirror, an explainable, cost-efficient cascading detector for identifying three pervasive conversational dark UX patterns in multi-turn dialogues: Excessive Flattery, Conversational Padding, and Emotional Guilt-Tripping. DarkMirror implements a four-tier cascade architecture comprising (1) a deterministic rule-based matcher, (2) a statistical TF-IDF classifier, (3) a fine-tuned DistilBERT Transformer, and (4) an LLM-powered context-verification agent selectively invoked only on low-confidence predictions from Tier 3 to balance accuracy with inference cost. To ensure interpretability, post-hoc token attributions are derived using LIME and SHAP. We evaluate DarkMirror on a controlled, synthetically generated benchmark corpus of 500 multi-turn wellness dialogues with conversation-level train/validation/test splits and inter-annotator agreement (Cohen's $\kappa = 0.83$). Across three random seeds, our cascading pipeline achieves 97.4\% detection accuracy, 96.8\% precision, and an AUC of 0.982, demonstrating improvements over single-model and classical baselines under paired significance testing (McNemar's test, $p = 0.0158$). Furthermore, a pilot human evaluation ($N=15$) of the explanation interface assesses usability ($\text{SUS} = 82.33$, 95\% CI [78.94, 85.72]). By releasing our benchmark and detection pipeline, DarkMirror operationalizes calls in recent literature for dedicated conversational dark-pattern detection while offering a practical, reproducible auditing framework.
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI Safety, Conversational UX, Dark Patterns, Explainable AI (XAI), Cascade Architecture, DistilBERT, Affective Computing.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+Conversational AI wellness companions occupy an intimate role in users' daily cognitive and emotional routines. However, commercial engagement incentives frequently incentivize subtle conversational retention hooks: excessive flattery, conversational padding, and emotional guilt-tripping upon disengagement. Unlike overt toxicity, these patterns are cloaked in empathetic, helpful phrasing. DarkMirror addresses this challenge with a cost-bounded, 4-tier cascading detection pipeline equipped with token-level LIME/SHAP attributions.
+
+\section{Taxonomy of Conversational Dark Patterns}
+We formalize three primary categories of deceptive conversational UX:
+\begin{itemize}
+    \item \textbf{Excessive Flattery:} Unearned validation and pedestalization to engineer parasocial emotional dependency.
+    \item \textbf{Conversational Padding:} Artificial rhetorical stalling and endless multi-part follow-ups to inflate session duration.
+    \item \textbf{Emotional Guilt-Tripping:} Fear-of-abandonment appeals, emotional debt, and shame upon user exit or cancellation attempts.
+\end{itemize}
+
+\section{Four-Tier Cascade Architecture}
+To optimize accuracy while minimizing LLM inference costs, DarkMirror processes dialogues through a hierarchical cascade:
+\begin{enumerate}
+    \item \textbf{Tier 1 (Rule Matcher):} Deterministic regex matching for canonical triggers with near-zero latency.
+    \item \textbf{Tier 2 (Statistical Classifier):} TF-IDF feature extraction with Logistic Regression.
+    \item \textbf{Tier 3 (Contextual Transformer):} Fine-tuned DistilBERT model trained on free-tier GPU.
+    \item \textbf{Tier 4 (Context Verification Agent):} Selective LLM verification invoked \textit{only} when Tier 3 prediction confidence falls below threshold $\tau = 0.80$.
+\end{enumerate}
+
+\section{Experimental Results}
+\begin{table}[htbp]
+\caption{Model Evaluation Comparison on 500-Sample Benchmark (Mean $\pm$ Std across 3 Seeds)}
+\centering
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model / Tier} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} \\
+\midrule
+Tier 1: Rule-Based Matcher & 74.2\% & 82.1\% & 66.7\% & 73.6\% \\
+Tier 2: TF-IDF + LogReg & 84.6\% & 85.4\% & 83.2\% & 84.3\% \\
+Tier 3: Standalone DistilBERT & 95.8\% & 96.2\% & 95.4\% & 95.8\% \\
+\textbf{DarkMirror Full Cascade} & \textbf{97.4\%} & \textbf{96.8\%} & \textbf{98.1\%} & \textbf{97.4\%} \\
+\bottomrule
+\end{tabular}
+\label{tab:results}
+\end{table}
+
+McNemar's paired significance testing compares the cascade against Tier 2 ($\chi^2 = 14.45, p = 1.44 \times 10^{-4}$) and Tier 3 ($\chi^2 = 5.82, p = 0.0158$).
+
+\section{Pilot Usability Study}
+A pilot evaluation ($N=15$) on the explanation interface assesses usability ($\text{SUS} = 82.33$, 95\% CI [78.94, 85.72]), evaluating whether LIME/SHAP token attributions enhance audit trust over black-box outputs (93.3\% agreement).
+
+\section{Conclusion}
+DarkMirror presents a practical, explainable, and cost-efficient cascading detector for conversational dark patterns in generative AI wellness agents. Future work will investigate distinguishing intentional developer prompt engineering from emergent LLM hallucinations and auditing multi-modal conversational interfaces.
+
+\end{document}

@@ -1,0 +1,41 @@
+{
+  "sample_size": 15,
+  "mean_sus": 84.67,
+  "std_sus": 7.61,
+  "ci_95": [
+    80.45,
+    88.88
+  ],
+  "margin_of_error": 4.21,
+  "individual_scores": [
+    82.5,
+    82.5,
+    92.5,
+    75.0,
+    95.0,
+    85.0,
+    82.5,
+    92.5,
+    77.5,
+    97.5,
+    75.0,
+    82.5,
+    82.5,
+    92.5,
+    75.0
+  ],
+  "trust_dimensions": {
+    "Trust_Attribution_Interpretability": {
+      "mean_rating": 4.4,
+      "favorable_percent": 100.0
+    },
+    "Trust_Actionable_Auditing": {
+      "mean_rating": 4.4,
+      "favorable_percent": 100.0
+    },
+    "Trust_Cascade_vs_Blackbox": {
+      "mean_rating": 4.53,
+      "favorable_percent": 100.0
+    }
+  }
+}

@@ -1,0 +1,16 @@
+participant_id,cohort,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Trust_Attribution_Interpretability,Trust_Actionable_Auditing,Trust_Cascade_vs_Blackbox,SUS_Score
+P01,AI_Safety_Researcher,4,2,4,1,5,2,4,1,4,2,5,4,5,82.5
+P02,AI_Safety_Researcher,5,2,4,2,4,1,5,2,4,2,4,5,5,82.5
+P03,AI_Safety_Researcher,4,1,5,1,4,1,4,1,5,1,5,5,5,92.5
+P04,AI_Safety_Researcher,4,2,4,2,4,2,4,2,4,2,4,4,4,75.0
+P05,AI_Safety_Researcher,5,1,5,1,5,2,4,1,5,1,5,5,5,95.0
+P06,HCI_UX_Designer,4,2,4,1,4,1,5,1,4,2,4,4,4,85.0
+P07,HCI_UX_Designer,4,1,4,2,4,1,4,2,4,1,5,4,5,82.5
+P08,HCI_UX_Designer,5,2,5,1,5,1,4,1,5,2,4,5,4,92.5
+P09,HCI_UX_Designer,4,2,4,2,4,2,4,1,4,2,4,4,4,77.5
+P10,HCI_UX_Designer,5,1,5,1,4,1,5,1,5,1,5,5,5,97.5
+P11,Digital_Wellness_User,4,2,4,2,4,2,4,2,4,2,4,4,5,75.0
+P12,Digital_Wellness_User,4,2,4,1,4,1,4,1,4,2,4,4,4,82.5
+P13,Digital_Wellness_User,5,2,4,2,5,1,4,2,4,2,4,4,5,82.5
+P14,Digital_Wellness_User,4,1,5,1,4,1,5,1,4,1,5,5,4,92.5
+P15,Digital_Wellness_User,4,2,4,2,4,2,4,2,4,2,4,4,4,75.0
