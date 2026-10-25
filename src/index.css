@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-950 text-slate-100 font-sans antialiased;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-800/50 backdrop-blur-xl border border-slate-700/50 rounded-2xl;
+  }
+  .glass-card-hover {
+    @apply glass-card hover:border-accent-purple/30 hover:shadow-lg hover:shadow-accent-purple/5 transition-all duration-300;
+  }
+  .gradient-border {
+    @apply relative;
+    background: linear-gradient(var(--angle, 135deg), #8b5cf6, #3b82f6, #06b6d4);
+    padding: 1px;
+    border-radius: 1rem;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400;
+  }
+  .risk-safe { @apply text-risk-safe bg-risk-safe/10 border-risk-safe/30; }
+  .risk-warning { @apply text-risk-warning bg-risk-warning/10 border-risk-warning/30; }
+  .risk-danger { @apply text-risk-danger bg-risk-danger/10 border-risk-danger/30; }
+}
